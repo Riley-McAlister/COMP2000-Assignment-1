@@ -22,7 +22,7 @@ class Dingo extends Animal{
     int scentRange;
 
     //object position change, rate of movement capped at topSpeed;
-    void hop(){
+    void run(){
     }
 }
 
@@ -31,7 +31,7 @@ class Kangaroo extends Animal{
     int predatorDetectionRange;
 
     //object position change, rate of movement capped at topSpeed;
-    void run(){
+    void hop(){
     }
 }
 
