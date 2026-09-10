@@ -13,17 +13,17 @@ public class grid {
     }
 
     public void newDingo(double x, double y){
-        Dingo foo = new Dingo();
-        foo.create(x,y);
-        this.f.add(foo);
-        this.Animals.add(foo);
+        Dingo d = new Dingo();
+        d.create(x,y);
+        this.f.add(d);
+        this.Animals.add(d);
     }
 
     public void newKangaroo(double x, double y){
-        Kangaroo foo = new Kangaroo();
-        foo.create(x,y);
-        this.f.add(foo);
-        this.Animals.add(foo);
+        Kangaroo k = new Kangaroo();
+        k.create(x,y);
+        this.f.add(k);
+        this.Animals.add(k);
     }
 
     public void death(Animal a) {

@@ -46,14 +46,14 @@ public class PanelDemo {
 
                     // Wrap around right edge
                     if (Animals.get(i).x >= f.getWidth() || Animals.get(i).x < 1) {
-                        Animals.get(i).mx *= -1;
+                        Animals.get(i).moveX *= -1;
                     }
 
                     // Wrap around bottom
                     if (Animals.get(i).y >= f.getHeight() || Animals.get(i).y < 1) {
-                        Animals.get(i).my *= -1;
+                        Animals.get(i).moveY *= -1;
                     }
-                    Animals.get(i).move(g);
+                    Animals.get(i).wander(g);
                     //i--;
 
                     
