@@ -8,28 +8,37 @@ public class PanelDemo {
 
     public static void main(String[] args) {
 
-        Frame f = new Frame("Example");
+        Frame f = new Frame("Predator Prey Simulation");
 
         f.setSize(600, 600);
         f.setLayout(null);
+        f.setBackground(new Color(163, 46, 7));
 
-        Container<Animal> Animals = new Container<>();
+        Container<Animal> animals = new Container<>();
+        Container<Vegetation> vegetation = new Container<>();
+       
 
         grid g = new grid();
-        g.set(Animals, f);
+        g.set(animals, vegetation, f);
 
         // Create the panels
-        for (int i = 0; i < 10; i++) {
-            double x = (int)(Math.random() * 600);
-            double y = (int)(Math.random() * 600);
-            g.newDingo(x,y);
+        for(int i =0; i < 200; i++){
+            double x = (int) (Math.random() * 600);
+            double y = (int) (Math.random() * 600);
+            g.newVegetation(x,y);
+        }
+        for (int i = 0; i < 5; i++) {
+            double x = (int) (Math.random() * 600);
+            double y = (int) (Math.random() * 600);
+            g.newDingo(x, y);
         }
         for (int i = 0; i < 20; i++) {
-            double x = (int)(Math.random() * 600);
-            double y = (int)(Math.random() * 600);
-            g.newKangaroo(x,y);
+            double x = (int) (Math.random() * 600);
+            double y = (int) (Math.random() * 600);
+            g.newKangaroo(x, y);
         }
 
+        
         f.setVisible(true);
 
         int delay = 20;
@@ -39,29 +48,29 @@ public class PanelDemo {
             public void actionPerformed(ActionEvent e) {
 
                 try {
-                    int i=Animals.size();
-                //for (int i = Animals.size()-1; i >= 0; i--) {
-                    while (i >0) {
-                    i--;
+                    int i = animals.size();
+                    // for (int i = Animals.size()-1; i >= 0; i--) {
+                    while (i > 0) {
+                        i--;
 
-                    // Wrap around right edge
-                    if (Animals.get(i).x >= f.getWidth() || Animals.get(i).x < 1) {
-                        Animals.get(i).moveX *= -1;
+                        // Wrap around right edge
+                        if (animals.get(i).x >= f.getWidth() || animals.get(i).x < 1) {
+                            animals.get(i).moveX *= -1;
+                        }
+
+                        // Wrap around bottom
+                        if (animals.get(i).y >= f.getHeight() || animals.get(i).y < 1) {
+                            animals.get(i).moveY *= -1;
+                        }
+                        animals.get(i).wander(g);
+                        
+
                     }
 
-                    // Wrap around bottom
-                    if (Animals.get(i).y >= f.getHeight() || Animals.get(i).y < 1) {
-                        Animals.get(i).moveY *= -1;
-                    }
-                    Animals.get(i).wander(g);
-                    //i--;
-
-                    
-                }
-                //g.die();
-                } catch(IndexOutOfBoundsException i) {
+                    g.growVegetation();
+                } catch (IndexOutOfBoundsException i) {
                     System.out.println(i);
-                    System.out.println(Animals.size());
+                    System.out.println(animals.size());
                 }
             }
         });

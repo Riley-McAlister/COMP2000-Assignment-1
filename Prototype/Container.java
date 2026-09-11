@@ -3,18 +3,18 @@ package Prototype;
 import java.util.ArrayList;
 import java.util.List;
 
-public class Container<Animal> {
-    private List<Animal> items = new ArrayList<>();
+public class Container<T> {
+    private List<T> items = new ArrayList<>();
 
-    public void add(Animal item) {
+    public void add(T item) {
         items.add(item);
     }
 
-    public void remove(Animal item) {
+    public void remove(T item) {
         items.remove(item);
     }
 
-    public Animal get(int index) {
+    public T get(int index) {
         return items.get(index);
     }
 
@@ -22,4 +22,5 @@ public class Container<Animal> {
         return items.size();
     }
 
+    
 }
