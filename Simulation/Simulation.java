@@ -16,16 +16,15 @@ public class Simulation {
 
         Container<Animal> animals = new Container<>();
         Container<Vegetation> vegetation = new Container<>();
-       
 
         grid g = new grid();
         g.set(animals, vegetation, f);
 
         // Create the panels
-        for(int i =0; i < 300; i++){
+        for (int i = 0; i < 300; i++) {
             double x = (int) (Math.random() * 600);
             double y = (int) (Math.random() * 600);
-            g.newVegetation(x,y);
+            g.newVegetation(x, y);
         }
         for (int i = 0; i < 2; i++) {
             double x = (int) (Math.random() * 600);
@@ -38,7 +37,6 @@ public class Simulation {
             g.newKangaroo(x, y);
         }
 
-        
         f.setVisible(true);
 
         int delay = 20;
@@ -63,7 +61,6 @@ public class Simulation {
                             animals.get(i).moveY *= -1;
                         }
                         animals.get(i).wander(g);
-                        
 
                     }
 

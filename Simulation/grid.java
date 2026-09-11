@@ -18,6 +18,7 @@ public class grid {
     }
 
     public void newDingo(double x, double y) {
+        // create new dingo
         Dingo d = new Dingo();
         d.create(x, y);
         this.f.add(d);
@@ -25,6 +26,7 @@ public class grid {
     }
 
     public void newKangaroo(double x, double y) {
+        // create new kangaroo
         Kangaroo k = new Kangaroo();
         k.create(x, y);
         this.f.add(k);
@@ -32,26 +34,29 @@ public class grid {
     }
 
     public void newVegetation(double x, double y) {
+        // create new vegetation
         Vegetation v = new Vegetation(x, y);
         this.f.add(v);
         this.vegetation.add(v);
     }
 
     public void death(Animal a) {
+        // Animal dies and is removed
         animals.remove(a);
         f.remove(a);
     }
 
     public void eaten(Vegetation v) {
+        // vegetation is eaten and is removed
         vegetation.remove(v);
         f.remove(v);
     }
 
-    public void growVegetation(){
-
+    public void growVegetation() {
+        // vegetation is regenerated
         VegetationTimer++;
 
-        if(VegetationTimer >= VegetationGrowthTime){
+        if (VegetationTimer >= VegetationGrowthTime) {
             double x = Math.random() * 590;
             double y = Math.random() * 590;
             newVegetation(x, y);

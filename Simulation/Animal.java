@@ -53,7 +53,6 @@ public class Animal extends Panel {
         moveX = Math.random() * speed;
         // Math.sqrt(4 - Math.pow(moveY, 2));
 
-        
         changeDirection();
     }
 
@@ -87,16 +86,20 @@ public class Animal extends Panel {
     }
 
     public int ageAnimal() {
+        // Ages animal by 1 when called.
         age += 1;
         return age;
     }
 
     public int update() {
+        // update by 1 every call
         update += 1;
         return update;
     }
 
     public void breed(grid g) {
+        // if eligible kangaroo, create new kangaroo
+        // if eligible dingo, create new dingo
 
         if (canBreed()) {
 
@@ -108,14 +111,18 @@ public class Animal extends Panel {
                 g.newDingo(x, y);
                 System.out.println("New Dingo");
             }
-
+            // breeding costs 20 points of energy
             energy -= 20;
+            // takes current time when breeding occurs.
             lastBreedTime = System.currentTimeMillis();
         }
     }
 
     public boolean canBreed() {
+        // checks breeding eligibility
         long currentTime = System.currentTimeMillis();
+        // if age > minimum breeding, energy > minimum energy requirement
+        // Hunger > 30 and after breed cooldown, CanBreed = true
         return age >= breedAge &&
                 energy >= breedEnergy &&
                 currentTime - lastBreedTime >= breedCooldown &&
@@ -124,14 +131,16 @@ public class Animal extends Panel {
     }
 
     public void hungry() {
-
+        // hunger reduced when 1 when called.
         hunger -= 1;
     }
 
     public void eat() {
+        // if kangaroo eats: hunger = hunger + food value from plants
         if (this instanceof Kangaroo) {
             hunger += plantFoodValue;
         }
+        // if dingo eats: hunger = hunger + food value from kangaroos.
         if (this instanceof Dingo) {
             hunger += kangarooFoodValue;
         }
