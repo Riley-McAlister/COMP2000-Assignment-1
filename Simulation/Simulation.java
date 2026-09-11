@@ -4,7 +4,7 @@ import java.awt.*;
 import java.awt.event.*;
 import javax.swing.Timer;
 
-public class PanelDemo {
+public class Simulation {
 
     public static void main(String[] args) {
 
