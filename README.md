@@ -10,3 +10,7 @@ Kangaroo.java
 Dingo.java  
 Vegetation.java  
 Simulation.java  
+
+### Commands to run  
+javac Simulation/Simulation.java  
+java Simulation.Simulation
