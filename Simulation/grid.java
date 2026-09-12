@@ -1,61 +1,132 @@
 package Simulation;
 
+
+
 import java.awt.*;
-import javax.swing.*;
 
-public class Simulation {
-    public static void main(String[] args) {
-        JFrame f = new JFrame("Advanced Predator-Prey Simulation");
-        f.setSize(600, 600);
-        f.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
-        
-        JPanel canvas = new JPanel() {
-            @Override
-            protected void paintComponent(Graphics graphics) {
-                super.paintComponent(graphics);
-                graphics.setColor(new Color(139, 69, 19)); 
-                graphics.fillRect(0, 0, getWidth(), getHeight());
-                graphics.setColor(Color.WHITE);
-                graphics.drawString("Simulation Status: Active", 20, 20);
-            }
-        };
-        canvas.setLayout(null);
-        f.setContentPane(canvas);
 
-        Container<Animal> animals = new Container<>();
-        Container<Vegetation> vegetation = new Container<>();
 
-        grid g = new grid(); 
-        g.set(animals, vegetation, f);
+public class grid {
 
-        for (int i = 0; i < 300; i++) {
-            g.newVegetation(Math.random() * 600, Math.random() * 600);
-        }
-        for (int i = 0; i < 2; i++) {
-            g.newDingo(Math.random() * 600, Math.random() * 600);
-        }
-        for (int i = 0; i < 10; i++) {
-            g.newKangaroo(Math.random() * 600, Math.random() * 600);
-        }
+    Container<Animal> animals;
 
-        f.setVisible(true);
+    Container<Vegetation> vegetation;
 
-        Timer timer = new Timer(20, e -> {
-            try {
-                int i = animals.size();
-                while (i > 0) {
-                    i--;
-                    Animal current = animals.get(i);
-                    if (current.x >= f.getWidth() || current.x < 1) current.moveX *= -1;
-                    if (current.y >= f.getHeight() || current.y < 1) current.moveY *= -1;
-                    current.wander(g);
-                }
-                g.growVegetation();
-                f.repaint();
-            } catch (IndexOutOfBoundsException ex) {
-                System.out.println("Handled concurrent modification: " + ex.getMessage());
-            }
-        });
-        timer.start();
+
+
+    Frame f;
+
+
+
+    int VegetationTimer = 0;
+
+    int VegetationGrowthTime = 1;
+
+
+
+    public <T> void set(Container<Animal> i, Container<Vegetation> v, Frame o) {
+
+        animals = i;
+
+        vegetation = v;
+
+        f = o;
+
     }
-}
+
+
+
+    public void newDingo(double x, double y) {
+
+        // create new dingo
+
+        Dingo d = new Dingo();
+
+        d.create(x, y);
+
+        this.f.add(d);
+
+        this.animals.add(d);
+
+    }
+
+
+
+    public void newKangaroo(double x, double y) {
+
+        // create new kangaroo
+
+        Kangaroo k = new Kangaroo();
+
+        k.create(x, y);
+
+        this.f.add(k);
+
+        this.animals.add(k);
+
+    }
+
+
+
+    public void newVegetation(double x, double y) {
+
+        // create new vegetation
+
+        Vegetation v = new Vegetation(x, y);
+
+        this.f.add(v);
+
+        this.vegetation.add(v);
+
+    }
+
+
+
+    public void death(Animal a) {
+
+        // Animal dies and is removed
+
+        animals.remove(a);
+
+        f.remove(a);
+
+    }
+
+
+
+    public void eaten(Vegetation v) {
+
+        // vegetation is eaten and is removed
+
+        vegetation.remove(v);
+
+        f.remove(v);
+
+    }
+
+
+
+    public void growVegetation() {
+
+        // vegetation is regenerated
+
+        VegetationTimer++;
+
+
+
+        if (VegetationTimer >= VegetationGrowthTime) {
+
+            double x = Math.random() * 590;
+
+            double y = Math.random() * 590;
+
+            newVegetation(x, y);
+
+            VegetationTimer = 0;
+
+        }
+
+    }
+
+} 
+
