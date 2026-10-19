@@ -124,9 +124,9 @@ public class grid {
 
         if (VegetationTimer >= VegetationGrowthTime) {
 
-            double x = Math.random() * 590;
+            double x = Math.random() * 800;
 
-            double y = Math.random() * 590;
+            double y = Math.random() * 600;
 
             newVegetation(x, y);
 
