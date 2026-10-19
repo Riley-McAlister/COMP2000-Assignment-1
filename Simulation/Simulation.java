@@ -25,17 +25,17 @@ public class Simulation {
             g.newVegetation(x, y);
         }
         for (int i = 0; i < 2; i++) {
-            double x = (int) (Math.random() * 800);
-            double y = (int) (Math.random() * 600);
+            double x = (int) (Math.random() * 750) + 25;
+            double y = (int) (Math.random() * 550) + 25;
             g.newDingo(x, y);
         }
         for (int i = 0; i < 10; i++) {
-            double x = (int) (Math.random() * 800);
-            double y = (int) (Math.random() * 600);
+            double x = (int) (Math.random() * 750) + 25;
+            double y = (int) (Math.random() * 550) + 25;
             g.newKangaroo(x, y);
         }
 
-        Timer timer = new Timer(20, new ActionListener() {
+        Timer timer = new Timer(30, new ActionListener() {
             public void actionPerformed(ActionEvent e) {
                 try {
                     int i = animals.size();
