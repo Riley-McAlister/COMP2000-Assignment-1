@@ -41,12 +41,7 @@ public class Simulation {
                     int i = animals.size();
                     while (i > 0) {
                         i--;
-                        if (animals.get(i).x >= f.getWidth() || animals.get(i).x < 1) {
-                            animals.get(i).moveX *= -1;
-                        }
-                        if (animals.get(i).y >= f.getHeight() || animals.get(i).y < 1) {
-                            animals.get(i).moveY *= -1;
-                        }
+                        
                         animals.get(i).wander(g);
                     }
                     g.growVegetation();

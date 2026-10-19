@@ -92,6 +92,14 @@ public class grid {
 
     }
 
+    public void checkBounds (Animal a) {
+        if (a.x + a.Animal_Size >= f.getWidth() || a.x < 1) {
+            a.moveX *= -1;
+        }
+        if (a.y + 2 * a.Animal_Size >= f.getHeight() || a.y < 1) {
+            a.moveY *= -1;
+        }
+    }
 
 
     public void eaten(Vegetation v) {

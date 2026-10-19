@@ -10,6 +10,8 @@ public class Animal extends Panel {
     double x;
     double y;
 
+    int Animal_Size = 25;
+
     double energy = 100;
     double restEnergy = 50;
     double maxEnergy = 100;
@@ -64,10 +66,12 @@ public class Animal extends Panel {
             rest(a);
             return;
         }
+        a.checkBounds(this);
+
         x += moveX;
         y += moveY;
 
-        setBounds((int) x, (int) y, 25, 25);
+        setBounds((int) x, (int) y, Animal_Size, Animal_Size);
     }
 
     public double dist(Animal A, Animal B) {
