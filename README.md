@@ -1,15 +1,20 @@
 # COMP2000-Assignment-1
 
 ## Current Working Simulation:
-### Simulation folder
+### Submission2
 
 Animal.java  
+Behaviour.java  
+CauseOfDeath.java  
 Container.java  
-grid.java  
-Kangaroo.java  
 Dingo.java  
-Vegetation.java  
-Simulation.java  
+DingoBehaviour.java  
+grid.java  
+kangaroo.java  
+kangarooBehaviour.java  
+simulation.java  
+vegetation.java  
+
 
 ### Commands to run  
 javac Simulation/Simulation.java  
